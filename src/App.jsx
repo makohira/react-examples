@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 
 class Thing1 extends Component {
   render() {
+    const { title, children } = this.props;
     return (
       <div className="Thing1">
-        <h2>Stuff here</h2>
+        <h2>{title}</h2>
+        { children }
       </div>
     );
   }
@@ -12,9 +14,10 @@ class Thing1 extends Component {
 
 class Thing2 extends Component {
   render() {
+    const { gratitude } = this.props;
     return (
       <div className="Thing2">
-        <p><strong>More stuff here</strong></p>
+        <p>I am grateful for <strong>{ gratitude }</strong></p>
       </div>
     );
   }
@@ -25,9 +28,9 @@ class App extends Component {
     return (
       <div className="App">
         <p>FRAP application are fun and powerful</p>
-        <Thing1 />
-        <Thing2 />
-        <Thing2 />
+        <Thing1 title="Grateful">Today ...</Thing1>
+        <Thing2 gratitude="hot coffee"/>
+        <Thing2 gratitude="bug-free code"/>
       </div>
     );
   }
