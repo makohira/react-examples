@@ -1,4 +1,28 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+const GridDiv = styled.div`
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  background-color: #eee;
+  color: black;
+  margin: 20px;
+  `;
+
+const LeftColumn = styled.div`
+  grid-column: 1;
+  margin: 0.8em;
+  `;
+
+const RightColumn = styled.div`
+  grid-column: 2;
+  margin: 0.8em;
+  `;
+
+const EmphaticPar = styled.p`
+  font-style: oblique;
+  `;
 
 class Collatz extends Component {
   constructor(props) {
@@ -39,16 +63,19 @@ class App extends Component {
     const wikilink = 'https://en.wikipedia.org/wiki/Collatz_conjecture';
 
     return (
-      <div className="App">
-        <h1>Collatz Conjecture</h1>
-        <p>The <a href={wikilink}>Collatz Conjecture</a>&nbsp;
-        states that for any positive integer, <i>x</i>,
-        repeatedly applying ,<i>3x + 1</i> if odd and
-        <i>x/2</i> if even will eventually lead to 1.</p>
-        <p>No one knows if this is true.</p>
-
-        <Collatz number={number} />
-      </div>
+      <GridDiv>
+        <LeftColumn>
+          <h1>Collatz Conjecture</h1>
+          <p>The <a href={wikilink}>Collatz Conjecture</a>&nbsp;
+          states that for any positive integer, <i>x</i>,
+          repeatedly applying ,<i>3x + 1</i> if odd and
+          <i>x/2</i> if even will eventually lead to 1.</p>
+          <EmphaticPar>No one knows if this is true.</EmphaticPar>
+        </LeftColumn>
+        <RightColumn>
+          <Collatz number={number} />
+        </RightColumn>
+      </GridDiv>
     );
   }
 }
