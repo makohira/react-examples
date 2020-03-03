@@ -24,6 +24,17 @@ const EmphaticPar = styled.p`
   font-style: oblique;
   `;
 
+const VeryEmphaticPar = styled(EmphaticPar)`
+  font-size: 150%;
+`;
+
+const SpecialListItem = styled.li`
+  font-weight: bold;
+  font-size: 90%;
+  padding: 2px;
+  list-style-type: ${ props => props.ListStyleType || "square"};
+`;
+
 class Collatz extends Component {
   constructor(props) {
     super(props);
@@ -67,10 +78,10 @@ class App extends Component {
         <LeftColumn>
           <h1>Collatz Conjecture</h1>
           <p>The <a href={wikilink}>Collatz Conjecture</a>&nbsp;
-          states that for any positive integer, <i>x</i>,
-          repeatedly applying ,<i>3x + 1</i> if odd and
-          <i>x/2</i> if even will eventually lead to 1.</p>
-          <EmphaticPar>No one knows if this is true.</EmphaticPar>
+          states that for any positive integer, <SpecialListItem>x</SpecialListItem>,
+          repeatedly applying ,<SpecialListItem>3x + 1</SpecialListItem> if odd and
+          <SpecialListItem>x/2</SpecialListItem> if even will eventually lead to 1.</p>
+          <VeryEmphaticPar>No one knows if this is true.</VeryEmphaticPar>
         </LeftColumn>
         <RightColumn>
           <Collatz number={number} />
