@@ -5,25 +5,29 @@ class Collatz extends Component {
     super(props);
 
     let x = this.props.number;
-    let outputString = x.toString();
+    let outputArr = [ x ];
     while (typeof x == 'number' && x !== 1) {
       if ((x % 2) === 1) {
         x = 3 * x + 1;
       } else {
         x = x / 2;
       };
-      outputString += ' ' + x;
+      outputArr.push(x);
     };
-    this.outputString = outputString;
+    this.outputArr = outputArr;
   }
   render() {
     const { number } = this.props;
-    const outputString = this.outputString;
+    const outputArr = this.outputArr;
 
     return (
       <div className="Collatz">
         <h2>Collatz Sequence for {number}</h2>
-        <p>{ outputString }</p>
+        <ul>
+          {
+            outputArr.map( (x, ind) => { return <li key={ ind }>{ x }</li>; })
+          }
+        </ul>
       </div>
     )
   }
